@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sleep Outside | Product Details</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <script src="../js/product.js" type="module"></script>
+</head>
+
+<body>
+  <header class="divider">
+    <div class="logo">
+      <img src="/images/noun_Tent_2517.svg" alt="tent image for logo" />
+      <a href="../index.html"> Sleep<span class="highlight">Outside</span></a>
+    </div>
+    <div class="cart">
+      <a href="../cart/">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+          <!-- (el mismo SVG que ya tenías, no cambia nada acá) -->
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <main class="divider">
+    <section class="product-detail">
+      <h3></h3>
+      <!-- 👈 CAMBIO: quitamos el texto fijo "The North Face", el JS lo va a llenar -->
+
+      <h2 class="divider"></h2>
+      <!-- 👈 CAMBIO: quitamos el texto fijo del nombre del producto -->
+
+      <img class="divider" id="productImage" src="" alt="" />
+      <!-- 👈 CAMBIO: agregamos id="productImage" y dejamos src/alt vacíos -->
+
+      <p class="product-card__price" id="productPrice"></p>
+      <!-- 👈 CAMBIO: agregamos id="productPrice" y quitamos "$349.99" -->
+
+      <p class="product__color" id="productColor"></p>
+      <!-- 👈 CAMBIO: agregamos id="productColor" y quitamos el texto fijo -->
+
+      <p class="product__description" id="productDesc"></p>
+      <!-- 👈 CAMBIO: agregamos id="productDesc" y quitamos el texto fijo -->
+
+      <div class="product-detail__add">
+        <button id="addToCart" data-id="">Add to Cart</button>
+        <!-- 👈 CAMBIO: quitamos el data-id="985PR" fijo, el JS lo va a poner -->
+      </div>
+    </section>
+  </main>
+
+  <footer>&copy;NOT a real business</footer>
+</body>
+
+</html>
