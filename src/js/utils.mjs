@@ -31,5 +31,31 @@ export function getParam(param) {
 
 export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
   const products_map = list.map(templateFn);
+  if (clear) {
+    parentElement.innerHTML = "";
+  }
   parentElement.insertAdjacentHTML(position, products_map.join(""));
+}
+
+export function renderWithTemplate(template, parentElement, data, callback) {
+  parentElement.innerHTML = template;
+  if (callback) {
+    callback(data)
+  }
+}
+
+export async function loadTemplate(path){
+  const res = await fetch(path);
+  const template = await res.text();
+  return template
+}
+
+export async function loadHeaderFooter() {
+  const header_template = await loadTemplate("/partials/header.html");
+  const main_header = document.querySelector("#main-header");
+  renderWithTemplate(header_template, main_header);
+  
+  const footer_template = await loadTemplate("/partials/footer.html");
+  const main_footer = document.querySelector("#main-footer");
+  renderWithTemplate(footer_template, main_footer);
 }
