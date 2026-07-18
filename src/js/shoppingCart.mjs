@@ -1,33 +1,43 @@
-import { renderListWithTemplate } from "./utils.mjs";
+import { renderListWithTemplate, getLocalStorage } from "./utils.mjs";
 
-function productCardTemplate(product) {
-    return `
-    <li class="product-card">
-        <a href="product_pages/?product=${product.Id}">
-            <img src="${product.Image}"
-            alt="${product.Name}" />
-            <h3 class="card__brand">${product.Brand.Name}</h3>
-            <h2 class="card__name">${product.NameWithoutBrand}</h2>
-            <p class="product-card__price">${product.ListPrice}</p>
-        </a>
-    </li>
-    `;
-}
 
-export default class ProductList {
-    constructor(category, dataSource, listElement) {
-        this.category = category;
-        this.dataSource = dataSource;
+export default class ShoppingCart {
+    constructor(listElement) {
         this.listElement = listElement;
     }
-    async init() {
-        const product_list = await this.dataSource.getData();
-        this.renderList(product_list)
+
+    init() {
+        const cartItems = getLocalStorage("so-cart") || [];
+        this.renderCartContents(cartItems);
     }
 
-    renderList(productList) {
+    renderCartContents(cartItems) {
         renderListWithTemplate(
-            productCardTemplate, this.listElement, productList,"afterbegin", true
-        )
+            cartItemTemplate,
+            this.listElement,
+            cartItems,
+            "afterbegin",
+            true
+        );
     }
+}
+
+
+function cartItemTemplate(item) {
+    const newItem = `<li class="cart-card divider">
+  <a href="#" class="cart-card__image">
+    <img
+      src="${item.Image}"
+      alt="${item.Name}"
+    />
+  </a>
+  <a href="#">
+    <h2 class="card__name">${item.Name}</h2>
+  </a>
+  <p class="cart-card__color">${item.Colors[0].ColorName}</p>
+  <p class="cart-card__quantity">qty: 1</p>
+  <p class="cart-card__price">$${item.FinalPrice}</p>
+</li>`;
+
+    return newItem;
 }
