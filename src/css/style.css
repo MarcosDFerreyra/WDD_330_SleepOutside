@@ -90,7 +90,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
@@ -241,6 +241,11 @@ button {
   grid-column: 3;
 }
 
+.product-list img {
+  width: 100px;
+
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
@@ -255,9 +260,32 @@ button {
     font-size: inherit;
     grid-template-columns: 150px auto 15%;
   }
+
+  .product-list img {
+    width: 150px;
+
+  }
 }
 
 footer {
   font-size: var(--small-font);
   padding: 1em;
+}
+
+@media screen and (min-width: 768px) {
+  .product-list img {
+    width: 180px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .product-list img {
+    width: 250px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .product-list img {
+    width: 300px;
+  }
 }
