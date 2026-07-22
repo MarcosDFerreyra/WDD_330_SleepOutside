@@ -7,8 +7,8 @@ export default class ShoppingCart {
     }
 
     init() {
-        const cartItems = getLocalStorage("so-cart") || [];
-        this.renderCartContents(cartItems);
+        this.cartItems = getLocalStorage("so-cart") || [];
+        this.renderCartContents(this.cartItems);
     }
 
     renderCartContents(cartItems) {
@@ -20,6 +20,17 @@ export default class ShoppingCart {
             true
         );
     }
+
+    calculateTotalPrice(cartItems) {
+        let total_price = 0
+        
+        cartItems.forEach(item => {
+            total_price += item.FinalPrice
+        })
+        return total_price
+
+    }
+    
 }
 
 
